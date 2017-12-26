@@ -48,9 +48,8 @@ class TestPublicClient(object):
 
     @pytest.mark.parametrize('start', ('2017-11-01', None))
     @pytest.mark.parametrize('end', ('2017-11-30', None))
-    @pytest.mark.parametrize('granularity', (3600, None))
-    def test_get_historic_rates(self, client, start, end, granularity):
-        r = client.get_product_historic_rates('BTC-USD', start=start, end=end, granularity=granularity)
+    def test_get_historic_rates(self, client, start, end):
+        r = client.get_product_historic_rates('BTC-USD', start=start, end=end, granularity=3600*12)
         assert type(r) is list
 
     def test_get_product_24hr_stats(self, client):
